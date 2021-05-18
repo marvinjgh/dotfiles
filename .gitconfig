@@ -1,0 +1,9 @@
+[color]
+	ui = true
+[core]
+	editor = vim
+[color "diff"]
+	whitespace = red reverse
+[user]
+	email = marvinjgh@gmail.com
+	name = Marvin Gonzalez
