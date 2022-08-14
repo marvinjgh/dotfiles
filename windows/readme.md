@@ -30,3 +30,14 @@ New-Item -ItemType SymbolicLink -Path "~/AppData/Local/PackagesM/icrosoft.Window
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 New-Item -ItemType SymbolicLink -Path "~/.wslconfig" -Target "${pwd}/.wslconfig"
 ```
+
+### Reduce Docker on WSL
+
+Siquiendo https://dev.to/marzelin/how-to-reduce-size-of-docker-data-volume-in-docker-desktop-for-windows-v2-5d38 aplicar
+
+wsl --shutdown
+Optimize-VHD -Path $Env:LOCALAPPDATA\Docker\wsl\data\ext4.vhdx -Mode Full
+
+## Microsoft Teams clean cache
+
+https://albandrodsmemory.com/2019/01/04/microsoft-teams-how-to-clean-cache/

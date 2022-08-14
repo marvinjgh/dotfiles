@@ -2,6 +2,7 @@
 	ui = true
 [user]
 	name = Marvin Gonzalez
+	email = marvinjgh@gmail.com
 [core]
 	editor = \"C:\\Users\\Marvin\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe\" --wait
 [credential "helperselector"]
