@@ -66,3 +66,7 @@ alias drop_cache="sudo sh -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a 
 # # A way to define and run tasks in a project. It's like make except it's pure
 # # Bash so there's no make limitations like not being able to forward arguments.
 # alias run=./run
+
+## docker commands
+alias docker-ps=docker ps --format "Id\t{{.ID}}\nName\t{{.Names}}\nImage\t{{.Images}}\nPorts\t{{.Ports}}\nCommand\t{{.Command}}\nCreated\t{{.CreatedAt}}\nStatus\t{{.Status}}\n"
+alias docker-psa=docker ps -a --format "Id\t{{.ID}}\nName\t{{.Names}}\nImage\t{{.Images}}\nPorts\t{{.Ports}}\nCommand\t{{.Command}}\nCreated\t{{.CreatedAt}}\nStatus\t{{.Status}}\n"

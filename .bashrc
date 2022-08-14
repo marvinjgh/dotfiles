@@ -59,6 +59,10 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# Determine git branch.
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
 
 if [ "$color_prompt" = yes ]; then
     # override default virtualenv indicator in prompt
@@ -66,13 +70,14 @@ if [ "$color_prompt" = yes ]; then
 
     prompt_color='\[\033[;32m\]'
     info_color='\[\033[1;34m\]'
+    git_color='\[\033[3;33m\]'
     prompt_symbol=㉿
     if [ "$EUID" -eq 0 ]; then # Change prompt colors for root user
 	prompt_color='\[\033[;94m\]'
 	info_color='\[\033[1;31m\]'
 	prompt_symbol=💀
     fi
-    PS1=$prompt_color'\A\[\033[0;1m\]'$info_color$prompt_symbol'\w\$\[\033[0m\] '
+    PS1=$prompt_color'${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV)) }${debian_chroot:+($debian_chroot)}\A\[\033[00m\]'$prompt_symbol$info_color'\w\[\033[00m\]'$git_color'$(parse_git_branch)\[\033[00m\]\$ '
     # BackTrack red prompt
     #PS1='${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV)) }${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     #PS1='\[\033[01;32m\]\D{%d/%m/%Y-%H:%M} \u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[\033[01;33m\]$(parse_git_branch)\[\033[00m\]\$ '

@@ -2,7 +2,7 @@
 
 Estos son los archivos de configuración base que uso para mi ambiente de desarrollo.
 
-### Indice
+## Indice
 
 - [Instalación de las dependencias básicas](#instalación-de-las-dependencias-básicas)
 - [Agregando los archivos de configuración](#agregando-los-archivos-de-configuración)
@@ -21,7 +21,7 @@ sudo apt-get update && sudo apt-get install -y \
   python3-venv
 ```
 
-## Agregando los archivos de configuración
+## Agregando los dotfiles
 
 Los archivos son agregados usando el comando de symlink con la opción `-f` (force).
 
@@ -39,10 +39,21 @@ mkdir -p ~/.local/bin \
 
 ## WSL 1 y WSL 2
 
-Para la instalación y actualización de WSL revisar la [documentación](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+Para la instalación y actualización de WSL revisar la [documentación](https://docs.microsoft.com/en-us/windows/wsl/install-manual).
 
 Para cambiar la carpeta donde se montan los discos `/mnt/c` o `/mnt/d`, a `/c` o `/d` se debe agregar  el archivo `/etc/wsl.conf` y reiniciar para activar los cambios.
 
 ```sh
 sudo ln -fs ~/dotfiles/etc/wsl.conf /etc/wsl.conf
 ```
+
+### Reduce Docker on WSL
+
+Siquiendo https://dev.to/marzelin/how-to-reduce-size-of-docker-data-volume-in-docker-desktop-for-windows-v2-5d38 aplicar
+
+wsl --shutdown
+Optimize-VHD -Path $Env:LOCALAPPDATA\Docker\wsl\data\ext4.vhdx -Mode Full
+
+## Microsoft Teams clean cache
+
+https://albandrodsmemory.com/2019/01/04/microsoft-teams-how-to-clean-cache/
